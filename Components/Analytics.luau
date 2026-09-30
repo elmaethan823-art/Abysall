@@ -3,13 +3,13 @@
     For anyone wondering, this just sends a discord message when someone executed the script.
     We only log basic data such as roblox username, executor used and the game you are in.
     Sensetive data such as IP adresses or HWIDs are NOT logged and never will be.
-    If you want proof of this, feel free to dm me on discord: bocaj111004.
+    If you want proof of this, feel free to dm me on discord: elmaethan823-art.
 
 ]]--
 
 local function CloneReference(Object)
-    if Abysall.Environment.cloneref then
-        return Abysall.Environment.cloneref(Object)
+    if Seahook.Environment.cloneref then
+        return Seahook.Environment.cloneref(Object)
     else
         return Object
     end
@@ -21,20 +21,20 @@ local Services = setmetatable({}, {
     end
 })
 
-if Abysall.Environment.identifyexecutor and Abysall.Environment.request then
+if Seahook.Environment.identifyexecutor and Seahook.Environment.request then
     local Player = Services.Players.LocalPlayer
     local Data = {
         Account = Player.Name,
-        Executor = Abysall.Environment.identifyexecutor(),
-        Executions = tonumber(Abysall.TotalExecutions),
+        Executor = Seahook.Environment.identifyexecutor(),
+        Executions = tonumber(Seahook.TotalExecutions),
         GameName = Services.MarketplaceService:GetProductInfo(game.PlaceId).Name,
         PlaceId = tostring(game.PlaceId)
     }
 
     task.spawn(function()
         pcall(function()
-            Abysall.Environment.request({
-                Url = "https://abysall.wispbyte.org/api/send",
+            Seahook.Environment.request({
+                Url = "https://Abysall.wispbyte.org/api/send",
                 Method = "POST",
                 Headers = {
                     ["content-type"] = "application/json"
